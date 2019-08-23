@@ -6,7 +6,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom"
+    "test": "react-scripts test --env=jsdom --verbose=true"
   },
   "author": "Help.com",
   "license": "No license",
@@ -17,13 +17,17 @@
     "chance": "^0.8.0",
     "clsx": "^1.0.4",
     "lodash": "^4.17.2",
-    "prop-types": "^15.5.8",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-jss": "^8.6.1",
     "react-scripts": "^3.0.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "24.8.0"
+  },
   "browserslist": {
     "production": [
       ">0.2%",

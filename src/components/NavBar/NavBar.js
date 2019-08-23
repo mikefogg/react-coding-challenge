@@ -1,9 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 import clsx from 'clsx'
 // Components
 import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+
+// Stles
 
 const useStyles = makeStyles(theme => ({
 	wrapper: {
@@ -47,11 +50,13 @@ const useStyles = makeStyles(theme => ({
 	}
 }))
 
+// Component
+
 const NavBar = ({ isLoading, onToggleLoading, onClearMessages }) => {
 	const classes = useStyles({ isLoading: isLoading })
 
 	return (
-		<div position='static' className={classes.wrapper}>
+		<div className={classes.wrapper}>
 			<div className={classes.navBar}>
 				<Typography variant='h6' className={classes.title}>
 					Help.com
@@ -70,6 +75,14 @@ const NavBar = ({ isLoading, onToggleLoading, onClearMessages }) => {
 			</div>
 		</div>
 	)
+}
+
+// PropTypes
+
+NavBar.propTypes = {
+	isLoading: PropTypes.bool.isRequired,
+	onToggleLoading: PropTypes.func.isRequired,
+	onClearMessages: PropTypes.func.isRequired
 }
 
 export default NavBar

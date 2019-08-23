@@ -1,14 +1,17 @@
 import React, { useEffect, useState, useRef } from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 // Utilities
 import Priority from 'utils/constants/priority'
 // Custom Hooks
-import usePrevious from 'utils/hooks/use_previous'
+import usePrevious from 'utils/hooks/usePrevious'
 // Components
 import Snackbar from '@material-ui/core/Snackbar'
 import SnackbarContent from '@material-ui/core/SnackbarContent'
 import IconButton from '@material-ui/core/IconButton'
 import CloseIcon from '@material-ui/icons/Close'
+
+// Styles
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -25,6 +28,8 @@ const useStyles = makeStyles(theme => ({
 	}
 }))
 
+// Component
+
 const SnackbarConductor = ({ messages }) => {
 	const classes = useStyles()
 	const [open, setOpen] = useState(false)
@@ -34,7 +39,11 @@ const SnackbarConductor = ({ messages }) => {
 
 	useEffect(() => {
 		// Only fire the snackbar if our length is greater than it was before
-		if (messages.length === 0 || messages.length < prevMessages.length) { return }
+		if (
+			messages.length === 0 ||
+			!prevMessages ||
+			messages.length < prevMessages.length
+		) { return }
 		// Messages changed, we need a snackbar!
 		const newMessage = messages[0]
 		if (newMessage.priority === 1) {
@@ -49,7 +58,6 @@ const SnackbarConductor = ({ messages }) => {
 		if (!currentMessage) { return }
 		// We changed our snackbar! Set a 2 second timeout to clear it
 		snackbarTimeout.current = setTimeout(() => {
-			console.log("snackbar cleared!")
 			setOpen(false)
 		}, 2000)
 		// Open our snackbar!
@@ -57,12 +65,6 @@ const SnackbarConductor = ({ messages }) => {
 		// Make sure we clera the timeout on teardown
 		return () => clearTimeout(snackbarTimeout.current)
 	}, [currentMessage])
-
-	//
-	// TODO: Figure out why adding className={classes.error} to SnackbarContent doesn't work...
-	// According to everything I read, that should be perfectly fine
-	// https://github.com/mui-org/material-ui/blob/89687f38cae750650555772ba4d821c9084d8dfc/packages/material-ui/src/SnackbarContent/SnackbarContent.js
-	//
 
 	return (
 		<div>
@@ -85,6 +87,12 @@ const SnackbarConductor = ({ messages }) => {
 			)}
 		</div>
 	)
+}
+
+// PropTypes
+
+SnackbarConductor.propTypes = {
+	messages: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
 export default SnackbarConductor

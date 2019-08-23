@@ -34,3 +34,8 @@ Note: The example design below.
 9. Test your application to the degree that you feel comfortable with. No specific testing frameworks are required.
 
 *** Applicants are provided this challenge with no expectation on deadline. Please take the time you need to complete the challenge to the best of your ability. ***
+
+<!-- Hooks are not well supported in enzyme yet, can't find a way to get state unless in class component -->
+https://github.com/airbnb/enzyme/issues/2011
+
+<!-- It is not possible to manipulate state so I can't test adding messages -->

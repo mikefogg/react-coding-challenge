@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core/styles'
 // Utils
 import Priority from 'utils/constants/priority'
@@ -6,9 +7,7 @@ import Priority from 'utils/constants/priority'
 import Typography from '@material-ui/core/Typography'
 import Message from 'components/Message'
 
-//
 // Styles
-//
 
 const useStyles = makeStyles((theme, props) => ({
 	wrapper: {
@@ -44,15 +43,16 @@ const useStyles = makeStyles((theme, props) => ({
 	}
 }))
 
-const MessagesColumn = ({ messages, priority, onRemoveMessage }) => {
-	const priorityData = Priority[priority]
-	const classes = useStyles({ priority: priorityData.key })
+// Component
+
+const MessageColumn = ({ messages, priority, onRemoveMessage }) => {
+	const classes = useStyles()
 
 	return (
 		<div className={classes.wrapper}>
 			<div className={classes.header}>
 				<Typography className={classes.title} >
-					{priorityData.label}
+					{Priority[priority].label}
 				</Typography>
 				<Typography className={classes.subtTitle}>
 	        {messages ? messages.length : 0} Messages
@@ -60,11 +60,19 @@ const MessagesColumn = ({ messages, priority, onRemoveMessage }) => {
 			</div>
 			<div className={classes.scrollArea}>
 				{messages && messages.map(message => (
-					<Message message={message} onRemoveMessage={onRemoveMessage}/>
+					<Message key={message.id} message={message} onRemoveMessage={onRemoveMessage}/>
 				))}
 			</div>
 		</div>
 	)
 }
 
-export default MessagesColumn
+// PropTypes
+
+MessageColumn.propTypes = {
+	messages: PropTypes.arrayOf(PropTypes.object).isRequired,
+	priority: PropTypes.number.isRequired,
+	onRemoveMessage: PropTypes.func.isRequired
+}
+
+export default MessageColumn
