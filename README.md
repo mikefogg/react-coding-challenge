@@ -1,41 +1,27 @@
-## React Coding Challenge
+## React Coding Challenge - Help.com
 
-This code challenge tests your skills in react.js, testing and modular design.
-The purpose of the application is to correctly render a stream of messages coming from an api. Different messages will be coded different colors and require slightly different rendering. The rules are described in detail below.
+### Running The Challenge Locally
 
-This challenge already includes an API response. It is not required or expected for you to make any changes to this interaction.
+```bash
+$ cd /your/cloned/directory
+$ yarn install # Or $ npm install
+$ yarn start # Or $ npm start
+```
+Your app should be running at http://localhost:3000
 
-The 3 priorities that we provide you are:
-  * 1 = error
-  * 2 = warning
-  * 3 = info
+### Running tests
 
-### Acceptance Criteria
+```bash
+$ cd /your/cloned/directory
+$ yarn test # Or $ npm test
+```
 
-1. Messages should be rendered in a table-like structure. The newest messages should appear at the top of their respective columns.
+### Notes
 
-Note: The example design below.
+#### Notes:
 
-![Example Design](https://github.com/helpdotcom/react-coding-challenge/raw/master/grid.png)
+- I decided at the beginning to setup a basic theme using ThemeProvider from Material UI, which honestly ended up causing tons of problems when it came down to testing. Apparently there's a bit of an issue currently with the state of functional components, enzyme, and wrapping the base component in a `<ThemeProvider/>`. Not to mention, you're unable to use anything like `setState` in your tests when using a functional component. Sigh.
 
+#### TODO:
 
-2. The messages should be color coded depending on the priority of the message. The appropriate color per priority is:
-
-   * error: #F56236
-   * warning: #FCE788
-   * info: #88FCA3
-
-3. Each time a message with the priority level of error is received, a snackbar containing the error message should also appear at the top of the application. The error should disappear in 2 seconds, when another error message takes its place, or when the user clears it via the provided button located in the error message.
-4. A user should be able to clear all messages at any point.
-5. A user should be able to clear a specific message in a specific column
-6. A user should be able to start and stop incoming messages. By default the messages should be running and displaying on the grid. The start/stop button should update depending on the state of the feed.
-7. A user should see a count of specific messages in each column
-8. Use material-ui components and JSS styles.
-9. Test your application to the degree that you feel comfortable with. No specific testing frameworks are required.
-
-*** Applicants are provided this challenge with no expectation on deadline. Please take the time you need to complete the challenge to the best of your ability. ***
-
-<!-- Hooks are not well supported in enzyme yet, can't find a way to get state unless in class component -->
-https://github.com/airbnb/enzyme/issues/2011
-
-<!-- It is not possible to manipulate state so I can't test adding messages -->
+- Responsive: The next thing I'd do here is make sure it works well responsively. My initial thought was that the columns would grow too far if they were layered vertically, so the solution would be a bit more involved with something like a Toolbar toggling between the three options.
