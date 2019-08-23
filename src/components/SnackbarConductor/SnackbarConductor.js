@@ -14,9 +14,9 @@ import CloseIcon from '@material-ui/icons/Close'
 // Styles
 
 const useStyles = makeStyles(theme => ({
-  icon: {
-    fontSize: 20,
-  },
+	icon: {
+		fontSize: 20,
+	},
 	error: {
 		backgroundColor: theme.palette.error.main
 	},
@@ -79,8 +79,8 @@ const SnackbarConductor = ({ messages }) => {
 						message={<span>{currentMessage.text}</span>}
 						action={[
 							<IconButton key='close' color='inherit' onClick={() => setOpen(false)}>
-			          <CloseIcon className={classes.icon} />
-			        </IconButton>
+								<CloseIcon className={classes.icon} />
+							</IconButton>
 						]}
 					/>
 				</Snackbar>

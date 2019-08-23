@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography'
 // Styles
 
 const useStyles = makeStyles(theme => ({
-  card: props => ({
+	card: props => ({
 		display: 'flex',
 		marginTop: 10,
 		padding: 20,
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
 		'&:first-of-type': {
 			marginTop: 0
 		}
-  }),
+	}),
 	details: {
 		flex: 1,
 		paddingRight: 20
@@ -54,13 +54,13 @@ const Message = ({ message, onRemoveMessage }) => {
 	return (
 		<div className={clsx([priorityKey, classes.card])}>
 			<div className={classes.details}>
-      	<Typography className={classes.message}>{message.text}</Typography>
+				<Typography className={classes.message}>{message.text}</Typography>
 				<Typography className={classes.timestamp}>{message.createdAt.toLocaleString()}</Typography>
 			</div>
 			<IconButton onClick={() => onRemoveMessage(message.id)}>
 				<CloseIcon className={classes.icon} />
 			</IconButton>
-    </div>
+		</div>
 	)
 }
 

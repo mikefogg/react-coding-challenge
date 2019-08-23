@@ -23,13 +23,13 @@ const useStyles = makeStyles((theme, props) => ({
 		padding: 20,
 	},
 	title: props => ({
-    fontSize: 16,
+		fontSize: 16,
 		color: theme.palette.black.main
-  }),
+	}),
 	subtTitle: {
-    fontSize: 14,
+		fontSize: 14,
 		color: theme.palette.gray.main
-  },
+	},
 	scrollArea: {
 		flex: 1,
 		margin: 20,
@@ -55,8 +55,8 @@ const MessageColumn = ({ messages, priority, onRemoveMessage }) => {
 					{Priority[priority].label}
 				</Typography>
 				<Typography className={classes.subtTitle}>
-	        {messages ? messages.length : 0} Messages
-	      </Typography>
+					{messages ? messages.length : 0} Messages
+				</Typography>
 			</div>
 			<div className={classes.scrollArea}>
 				{messages && messages.map(message => (

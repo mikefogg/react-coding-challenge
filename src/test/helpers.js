@@ -9,9 +9,9 @@ import { ThemeProvider } from '@material-ui/styles'
 //
 
 export const mountWithTheme = (child) => {
-  return mount(child, {
-    wrappingComponent: ({ children }) => <ThemeProvider theme={MainTheme}>{children}</ThemeProvider>
-  })
+	return mount(child, {
+		wrappingComponent: ({ children }) => <ThemeProvider theme={MainTheme}>{children}</ThemeProvider>
+	})
 }
 
 //

@@ -44,8 +44,8 @@ class MessagesPage extends Component {
 
 	componentDidUpdate(prevProps, prevState) {
 		if (prevState.isLoading === this.state.isLoading){ return }
-    this.state.isLoading ? this.messageGenerator.start() : this.messageGenerator.stop()
-  }
+		this.state.isLoading ? this.messageGenerator.start() : this.messageGenerator.stop()
+	}
 
 	// Store a reference to the last id we created
 	lastId = 0
@@ -114,17 +114,17 @@ class MessagesPage extends Component {
 		messageCallback: this.onMessageReceived
 	})
 
-  render() {
+	render() {
 
 
 		return (
-	    <div className={this.props.classes.wrapper}>
+			<div className={this.props.classes.wrapper}>
 				<SnackbarConductor messages={this.state.messages}/>
 				<NavBar isLoading={this.state.isLoading} onToggleLoading={this.onToggleLoading} onClearMessages={this.onClearMessages}/>
 				<div className={this.props.classes.panelWrapper}>
 					{this.renderColumns()}
 				</div>
-	    </div>
+			</div>
 		)
 	}
 }
